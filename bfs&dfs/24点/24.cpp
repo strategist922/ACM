@@ -27,6 +27,7 @@ void dfs(int sum,int cur,int m)
 	dfs(sum*cur,num[m+1],m+1);
 	if(cur!=0&&sum%cur==0)
 	dfs(sum/cur,num[m+1],m+1);
+
 	dfs(sum,cur+num[m+1],m+1);  //先计算后一部分，相当于加括号
 	dfs(sum,cur-num[m+1],m+1);
   dfs(sum,cur*num[m+1],m+1);
@@ -34,7 +35,7 @@ void dfs(int sum,int cur,int m)
 	dfs(sum,cur/num[m+1],m+1);
 }
 int main()
-{
+{ 
 	int i;
 	char str[5];
 	while(scanf("%s",str)!=EOF)
