@@ -5,18 +5,13 @@ using namespace std;
 int a[100005];
 int result[100005];
 int start[100005];
-struct Node{
-   int re;
-   int st;
-   int end;
-}Case[25];
 int main()
 {
     int n,k=0;
-    int m;
     scanf("%d",&n);
     while(k<n)
     {
+        int m;
         scanf("%d",&m);
         for(int i=0;i<m;i++)
         {
@@ -46,12 +41,9 @@ int main()
             if(result[i]>result[l])
                 l=i;
         }
-       Case[k].re=result[l];
-       Case[k].st=start[l]+1;
-       Case[k].end=l+1;
-    }
-    for(int i=1;i<=n;i++)
-    {
-        printf("Case %d:\n%d %d %d\n\n",i,Case[i].re,Case[i].st,Case[i].end);
+        if(k!=n)
+        printf("Case %d:\n%d %d %d\n\n",k,result[l],start[l]+1,l+1);
+        else
+        printf("Case %d:\n%d %d %d\n",k,result[l],start[l]+1,l+1);
     }
 }

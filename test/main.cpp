@@ -1,8 +1,9 @@
 #include <iostream>
+#include<cstring>
+#include<algorithm>
 using namespace std;
 int main()
 {
-    int i=0,j=0;
-    cout << "Hello world!" << endl;
-    return 0;
+  char a[10]="adsa";
+  cout<<strlen(a)<<" "<<strlen(a+1);
 }
