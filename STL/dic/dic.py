@@ -11,16 +11,11 @@ while True:
         break
 for j in range(len(l)):
     l[j]=l[j].lower()
-    t=(re.split(r'\d+',l[j]))
-    if t[0]=='':
-        l[j]=t[1]
-    else:
-        l[j]=t[0]
-    for a in l[j]:
-        if re.match('[a-z]',a):
-           pass
-        else:
-            l[j]=l[j].replace(a,'')
+    a=re.split(r'[^a-z]+',l[j])
+    for m in a:
+        if m!='':
+            l[j]=m
+            break
 l=list(set(l))
 l.sort()
 print()

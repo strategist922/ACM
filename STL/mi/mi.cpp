@@ -1,8 +1,10 @@
 #include<iostream>
 #include<cstring>
+//这里特别注意还有个图是树的条件！！！
 using namespace std;
 int Rank[100005];
 int f[100005];
+int visited[100005];
 int result[10000];
 void Union(int x,int y);
 int find(int x);
@@ -10,32 +12,50 @@ void make_set();
 int main()
 {
     int a,b;
-    int flag=1,i=0;
-    make_set();
+    int flag;
+    int t;
+    while(cin>>a>>b)
+  {
+      if(a==-1&&b==-1)
+          break;
+      if(a==0&&b==0)
+      {
+       cout<<"Yes"<<endl;
+       continue;
+      }
+      make_set();
+      memset(visited,0,sizeof(visited));
+      Union(a,b);
+      visited[a]=1;
+      visited[b]=1;
+      t=1;
+      flag=1;
     while(cin>>a>>b)
     {
-        if(a==-1&&b==-1)
-            break;
          if(a==0&&b==0)
+          {
+              (flag==1&&t==1)?cout<<"Yes"<<endl:cout<<"No"<<endl;
+              break;
+          }
+         if(visited[a]==0)
         {
-            getchar();
-            flag==1?result[i]=1:result[i]=0;
-            make_set();
-            flag=1;
-            i++;
-            continue;
+            t++;
+            visited[a]=1;
+        }
+        if(visited[b]==0)
+        {
+            t++;
+            visited[b]=1;
         }
         if(find(a)==find(b))
-        {
             flag=0;
-        }
         else
         {
+            t--;
             Union(a,b);
         }
    }
-    for(int j=0;j<i;j++)
-     result[j]==1?cout<<"Yes"<<endl:cout<<"No"<<endl;
+  }
    return 0;
 }
 void make_set()
